@@ -25,6 +25,10 @@ except ImportError:
     print("You must have 'pip' installed to run this script.")
     raise SystemExit
 
+try:
+    from pip import main as pipmain
+except:
+    from pip._internal import main as pipmain
 
 print("Installing Pyomo ...")
 
@@ -40,4 +44,4 @@ cmd.extend( sys.argv[1:] )
 # install Pyomo
 cmd.append('Pyomo')
 
-pip.main(cmd)
+pipmain(cmd)
